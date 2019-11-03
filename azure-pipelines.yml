@@ -21,7 +21,7 @@ steps:
   displayName: 'Build Angular'
   inputs:
     command: custom
-    customCommand: run build -- --pord
+    customCommand: run build -- --prod
     
 - task: Npm@1
   displayName: 'Test Angular'
