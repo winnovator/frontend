@@ -31,15 +31,9 @@ steps:
 - script: |
     sudo npm install -g @angular/cli
     sudo npm install
+    sudo npm test --watch=false
     sudo ng build --configuration accept
     
-- task: Npm@1
-  displayName: 'Test Angular'
-  inputs:
-    command: custom
-    customCommand: test --watch=false
-    workingDir: src/app
-
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'angular'
