@@ -1,0 +1,7 @@
+{
+  "appId": "Winnovator.Windesheim.nl",
+  "appName": "WInnovator",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
