@@ -28,7 +28,7 @@ steps:
   displayName: 'Build Angular'
   inputs:
     command: custom
-    customCommand: run build -- --prod
+    customCommand: ./ionic build --configuration accept
     
 - task: Npm@1
   displayName: 'Test Angular'
