@@ -23,8 +23,7 @@ steps:
     command: custom
     customCommand: run build -- --prod
     workingDir: src/app
-
-    task: Npm@1
+- task: Npm@1
   displayName: 'Test Angular'
   inputs:
     command: custom
