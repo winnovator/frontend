@@ -18,6 +18,13 @@ steps:
     workingDir: src/app
 
 - task: Npm@1
+  displayName: 'Install Ionic'
+  inputs:
+    command: custom
+    customCommand: install -g ionic
+
+
+- task: Npm@1
   displayName: 'Build Angular'
   inputs:
     command: custom
