@@ -21,7 +21,7 @@ steps:
   displayName: 'Build Angular'
   inputs:
     command: custom
-    customCommand: run build -- --prod
+    customCommand: run build -- --configuration accept
     workingDir: src/app
 - task: Npm@1
   displayName: 'Test Angular'
