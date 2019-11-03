@@ -1,4 +1,4 @@
-import { CameraService } from './../Camera/camera.service';
+import { CameraService } from './../camera/camera.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
