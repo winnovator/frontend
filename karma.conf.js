@@ -16,10 +16,16 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
       browsers: ["Chrome", "HeadlessChrome"],
+      singleRun: true,
       customLaunchers: {
       HeadlessChrome: {
       base: "ChromeHeadless",
-      flags: ["--no-sandbox"]
+      flags: [
+        '--headless',
+        '--disable-gpu',
+        '--no-sandbox',
+        '--remote-debugging-port=9222',
+        ]
       }
     },
     coverageIstanbulReporter: {
