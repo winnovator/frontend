@@ -21,13 +21,13 @@ steps:
   displayName: 'Build Angular'
   inputs:
     command: custom
-    customCommand: run build -- --configuration accept
-    workingDir: src/app
+    customCommand: run build -- --pord
+    
 - task: Npm@1
   displayName: 'Test Angular'
   inputs:
     command: custom
-    customCommand: test
+    customCommand: test --browsers=HeadlessChrome --watch=false
     workingDir: src/app
 
 - task: PublishPipelineArtifact@0
