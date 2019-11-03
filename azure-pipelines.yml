@@ -24,7 +24,14 @@ steps:
     customCommand: run build -- --prod
     workingDir: src/app
 
+    task: Npm@1
+  displayName: 'Test Angular'
+  inputs:
+    command: custom
+    customCommand: ng test
+    workingDir: src/app
+
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'angular'
-    targetPath: 'src/dist'
+    targetPath: 'src/www'
