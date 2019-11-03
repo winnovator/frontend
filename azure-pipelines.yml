@@ -27,7 +27,7 @@ steps:
   displayName: 'Test Angular'
   inputs:
     command: custom
-    customCommand: ng test
+    customCommand: test
     workingDir: src/app
 
 - task: PublishPipelineArtifact@0
