@@ -14,7 +14,8 @@ steps:
 - task: Npm@1
   displayName: 'npm install angular cli'
   inputs:
-    command: install @angular/cli
+    command: custom
+    customCommand: install @angular/cli
     workingDir: src/app
 
 - task: Npm@1
