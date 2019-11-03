@@ -25,7 +25,7 @@ steps:
 
 
 - script: |
-    npm install @angular/cli
+    npm install -g @angular/cli
     npm install
     ng build --configuration accept
     
