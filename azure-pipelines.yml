@@ -28,7 +28,7 @@ steps:
   displayName: 'Build Angular'
   inputs:
     command: custom
-    customCommand: build --configuration accept
+    customCommand: ng build --configuration accept
     
 - task: Npm@1
   displayName: 'Test Angular'
