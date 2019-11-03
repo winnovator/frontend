@@ -11,6 +11,10 @@ pool:
 
 steps:
 
+- task: NodeTool@0 
+  inputs:
+    versionSpec: '10.x' # replace this value with the version that you need for your project
+
 - task: Npm@1
   displayName: 'npm install'
   inputs:
@@ -24,11 +28,10 @@ steps:
     customCommand: install ionic
 
 
-- task: Npm@1
-  displayName: 'Build Angular'
-  inputs:
-    command: custom
-    customCommand: ./ionic build --configuration accept
+- script: |
+    sudo npm install -g @angular/cli
+    sudo npm install
+    sudo ng build --configuration accept
     
 - task: Npm@1
   displayName: 'Test Angular'
