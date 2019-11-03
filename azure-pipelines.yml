@@ -29,9 +29,9 @@ steps:
 
 
 - script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --configuration accept
+    sudo npm install -g @angular/cli
+    sudo npm install
+    sudo ng build --configuration accept
     
 - task: Npm@1
   displayName: 'Test Angular'
