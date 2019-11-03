@@ -16,7 +16,6 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
       browsers: ["Chrome", "HeadlessChrome"],
-      singleRun: true,
       customLaunchers: {
       HeadlessChrome: {
       base: "ChromeHeadless",
@@ -39,6 +38,6 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: true
   });
 };
