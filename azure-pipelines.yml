@@ -12,13 +12,6 @@ pool:
 steps:
 
 - task: Npm@1
-  displayName: 'npm install angular cli'
-  inputs:
-    command: custom
-    customCommand: install @angular/cli
-    workingDir: src/app
-
-- task: Npm@1
   displayName: 'npm install'
   inputs:
     command: install
@@ -31,7 +24,10 @@ steps:
     customCommand: install ionic
 
 
-- script: ng build --configuration accept
+- script: |
+    npm install @angular/cli
+    npm install
+    ng build --configuration accept
     
 - task: Npm@1
   displayName: 'Test Angular'
