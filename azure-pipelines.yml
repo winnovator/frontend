@@ -24,11 +24,7 @@ steps:
     customCommand: install ionic
 
 
-- task: Npm@1
-  displayName: 'Build Angular'
-  inputs:
-    command: custom
-    customCommand: ng build --configuration accept
+- script: ng build --configuration accept
     
 - task: Npm@1
   displayName: 'Test Angular'
