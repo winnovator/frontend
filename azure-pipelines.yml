@@ -21,7 +21,7 @@ steps:
   displayName: 'Install Ionic'
   inputs:
     command: custom
-    customCommand: install -g ionic
+    customCommand: install ionic
 
 
 - task: Npm@1
