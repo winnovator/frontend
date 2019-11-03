@@ -1,4 +1,4 @@
-import { CameraService } from './Camera.service';
+import { CameraService } from './camera.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
