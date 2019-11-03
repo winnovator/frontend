@@ -37,7 +37,7 @@ steps:
   displayName: 'Test Angular'
   inputs:
     command: custom
-    customCommand: test --browsers=HeadlessChrome --watch=false
+    customCommand: test --watch=false
     workingDir: src/app
 
 - task: PublishPipelineArtifact@0
