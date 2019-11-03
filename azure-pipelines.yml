@@ -31,8 +31,8 @@ steps:
 - script: |
     sudo npm install -g @angular/cli
     sudo npm install
-    sudo npm test --watch=false
-    sudo ng build --configuration accept
+    npm test --watch=false
+    ng build --configuration accept
     
 - task: PublishPipelineArtifact@0
   inputs:
