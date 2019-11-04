@@ -1,19 +1,4 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-	  steps {
-		withCredentials([string(credentialsId: 'sonarID', variable: 'sonarID')]) {
-          ./src/app/  
-
-		  sh 'dotnet /opt/sonar-scanner-msbuild/SonarScanner.MSBuild.dll end /d:sonar.login="$sonarID"'
-		}
-	  }
-    }
-  }
-}
-
-pipeline {
     stages {
         stage('npm install') {
             steps {
