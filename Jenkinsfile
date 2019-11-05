@@ -27,6 +27,13 @@ pipeline {
           steps {
               sh "npm run test --browsers=HeadlessChrome --watch=false"
           }
-        }        
-    }
+        }   
+
+        stage('SonarCube') {
+        steps {
+		withCredentials([string(credentialsId: 'sonarID', variable: 'sonarID')]) {
+
+        npm install -g sonarqube-scanner
+        sh "sonar-scanner  -d:sonar.login='$sonarID'"
+    }}}
 }
