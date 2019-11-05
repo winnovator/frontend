@@ -30,10 +30,12 @@ pipeline {
         }   
 
         stage('SonarCube') {
-        steps {
-		withCredentials([string(credentialsId: 'sonarID', variable: 'sonarID')]) {
+            steps {
+                withCredentials([string(credentialsId: 'sonarID', variable: 'sonarID')]) {
 
-        npm install -g sonarqube-scanner
-        sh "sonar-scanner  -d:sonar.login='$sonarID'"
-    }}}
+                npm install -g sonarqube-scanner
+                sh "sonar-scanner  -d:sonar.login='$sonarID'"
+                 }
+            }
+        }
 }
