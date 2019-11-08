@@ -33,7 +33,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'sonarID', variable: 'sonarID')]) {
 
-                npm install -g sonarqube-scanner
+                sh "npm install -g sonarqube-scanner"
                 sh "sonar-scanner  -d:sonar.login='$sonarID'"
                  }
             }
