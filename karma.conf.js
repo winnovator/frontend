@@ -15,9 +15,9 @@ module.exports = function (config) {
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
-      browsers: ["ChromeHeadless"],
+      browsers: ["ChromeHeadlessNoSandbox"],
       customLaunchers: {
-      HeadlessChrome: {
+      ChromeHeadlessNoSandbox: {
       base: "ChromeHeadless",
       flags: [
         '--headless',

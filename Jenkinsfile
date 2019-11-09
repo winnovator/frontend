@@ -17,7 +17,7 @@ pipeline {
                     sh "apt-get update"
                     
                     sh "sudo apt-get install -y google-chrome-stable"
-                    sh "ng test --browsers=ChromeHeadless --watch=false"
+                    sh "ng test --browsers=ChromeHeadlessNoSandbox --watch=false"
                 }
             }
         }
