@@ -1,9 +1,11 @@
+import { ServiceService } from './main.service';
 import { TokenApiService } from './../services/token-api.service';
 import { TabsService } from './../tabs/tabs.service';
 import { DesignShop } from '../models/designshop';
 import { DesignshopApiService } from '../services/designshop-api.service';
 import { Component,  OnInit, ViewChild } from '@angular/core';
 import { TabsPage } from '../tabs/tabs.page';
+
 
 
 
@@ -19,13 +21,11 @@ export class MainPage implements OnInit {
   designshop: DesignShop;
 
   constructor(private designshopApiService: DesignshopApiService, private tabs: TabsPage,
-              private tabsService: TabsService, private tokenApiService: TokenApiService ) {}
+              private tabsService: TabsService, private tokenApiService: TokenApiService,
+              private serviceservice: ServiceService ) {}
 
   public async ngOnInit() {
-    await this.tokenApiService.getJWTToken().then(data =>
-      this.designshopApiService.getDesignShops().subscribe(res => this.designshops = res)
-    );
-    localStorage.removeItem('ds');
+    this.getDesignShops();
   }
 
   public optionsFn(): void {
@@ -33,6 +33,12 @@ export class MainPage implements OnInit {
     localStorage.setItem('ds', JSON.stringify(this.designshop));
     this.tabs.cameraDisabled = this.tabsService.SetCameraPageAccess();
     }
+  }
+
+  public async getDesignShops() {
+    await this.tokenApiService.getJWTToken().then(data =>
+      this.designshopApiService.getDesignShops().subscribe(res => this.designshops = res)
+    );
   }
 }
 
