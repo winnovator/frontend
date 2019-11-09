@@ -11,7 +11,7 @@ pipeline {
                     sh "npm install"
                     sh "ng build --configuration accept"
                     sh "echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' | tee -a /etc/apt/sources.list"
-                    sh "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -"
+                    sh "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -"
                     sh "apt-get update"
                     sh "apt-get install google-chrome-stable"
                     sh "npm run test --browsers=HeadlessChrome --watch=false"
