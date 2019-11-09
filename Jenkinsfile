@@ -10,7 +10,7 @@ pipeline {
                   //  sh "npm install -g @angular/cli"
                   //  sh "npm install"
                   //  sh "ng build --configuration accept"
-                    sh "echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' | tee -a /etc/apt/sources.list"
+                    sh "echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' | tee -a /etc/apt/sources.list.d/google.list"
                     sh "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -"
                     sh "apt-get update"
                     sh "apt-get install libxpm4 libxrender1 libgtk2.0-0 libnss3 libgconf-2-4"
