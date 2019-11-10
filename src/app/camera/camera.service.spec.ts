@@ -59,7 +59,7 @@ describe('CameraService', () => {
   it('test upload Picture zonder sessionId', (done) => {
     const file = new File(['f'], 'test-file.jpg', { lastModified: new Date().getTime(), type: 'image/jpeg' });
     service.sendPicture(file, 'tester.jpg');
-    expect(service.uploadStatus).toEqual(new BehaviorSubject<string>('No sessionID available'));
+    expect(service.uploadStatus).toEqual(new BehaviorSubject<string>('Upload status: No sessionID available'));
     done();
     });
 
