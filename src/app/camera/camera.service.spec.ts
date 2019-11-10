@@ -13,6 +13,7 @@ describe('CameraService', () => {
   beforeEach(() => {
     httpTestingController = TestBed.get(HttpTestingController);
     service = TestBed.get(CameraService);
+    localStorage.clear();
   });
 
   afterEach(() => {
