@@ -21,8 +21,7 @@ export class MainPage implements OnInit {
   designshop: DesignShop;
 
   constructor(private designshopApiService: DesignshopApiService, private tabs: TabsPage,
-              private tabsService: TabsService, private tokenApiService: TokenApiService,
-              private serviceservice: ServiceService ) {}
+              private tabsService: TabsService, private tokenApiService: TokenApiService) {}
 
   public async ngOnInit() {
     this.getDesignShops();

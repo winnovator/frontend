@@ -1,8 +1,8 @@
 {
   "name": "WInnovator",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "1.0.0 beta",
+  "author": "Windesheim",
+  "homepage": "https://www.windesheim.nl",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

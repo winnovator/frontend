@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { version, name } from '../../../package.json';
 
 @Component({
   selector: 'app-info',
@@ -7,6 +8,13 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['info.page.scss']
 })
 export class InfoPage {
+public appVersion;
+public appName;
+
+  constructor() {
+    this.appVersion = version;
+    this.appName = name;
+  }
 }
 
 
