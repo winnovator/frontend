@@ -16,7 +16,7 @@ export class CameraService {
   data = this.uploadStatus.asObservable();
   constructor(private http: HttpClient) { }
 
-  updateStatus(message: string){
+  updateStatus(message: string) {
     this.uploadStatus.next(message);
   }
   // Send picture to backend
@@ -59,9 +59,7 @@ export class CameraService {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
-      //this.updateStatus('Upload error: ' + error.error);
     } else {
-      //this.updateStatus('Upload error 404: ');
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
       console.error(
