@@ -21,7 +21,7 @@ export class CameraService {
   }
   // Send picture to backend
   sendPicture(blob: any, name: string) {
-      this.updateStatus('uploading');
+      this.updateStatus('Upload status: Uploading');
       if (localStorage.getItem('ds') !== null) {
       this.ds = JSON.parse(localStorage.getItem('ds'));
       this.url = `${environment.apiUrl}UploadImage/${this.ds.id}`;
@@ -31,14 +31,14 @@ export class CameraService {
             this.updateStatus('POST call successful value returned in body');
           },
           response => {
-            this.updateStatus('Upload error');
+            this.updateStatus('Upload status: Upload error');
           },
           () => {
 
-            this.updateStatus('Upload complete');
+            this.updateStatus('Upload status: Upload complete');
           });
     } else {
-      this.updateStatus('No sessionID available');
+      this.updateStatus('Upload status: No sessionID available');
     }
   }
 
