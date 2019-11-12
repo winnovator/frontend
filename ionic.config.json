@@ -1,0 +1,7 @@
+{
+  "name": "WInnovator",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

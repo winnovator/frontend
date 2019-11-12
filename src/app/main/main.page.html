@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      WInnovator Session Selection
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card">
+    <div id='image'><img src="./assets/winnovator.svg" alt="" /></div>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          Select a session
+          <ion-select placeholder="" [(ngModel)]="designshop" (ionChange)="optionsFn();">
+            <ion-select-option *ngFor='let designshop of designshops' [value]='designshop'>
+              {{designshop.description}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>Links</ion-label>
+    </ion-list-header>
+    <ion-item href="https://windesheim.nl">
+      <ion-icon slot="start" color="medium" name="book"></ion-icon>
+      <ion-label>Windesheim</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
