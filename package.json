@@ -30,8 +30,9 @@
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1",
-    "@auth0/angular-jwt" : "^3.0.1",
-	"@ionic/pwa-elements" : "^1.4.1"
+    "@auth0/angular-jwt": "^3.0.1",
+    "@ionic/pwa-elements": "^1.4.1",
+    "@innotec/ngx-scanner": "^2.0.0"
   },
   "devDependencies": {
     "@angular-devkit/architect": "~0.801.2",
