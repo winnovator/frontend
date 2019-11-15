@@ -19,7 +19,7 @@ import { ZXingScannerComponent } from '@innotec/ngx-scanner';
 
 export class MainPage implements OnInit {
 
-  @ViewChild('scan', { static: true, read: false}) scanner: ZXingScannerComponent;
+  @ViewChild('scan', { static: true, read: false }) scanner: ZXingScannerComponent;
 
   hasCameras = false;
   hasPermission: boolean;
@@ -32,7 +32,7 @@ export class MainPage implements OnInit {
   designshop: DesignShop;
 
   constructor(private designshopApiService: DesignshopApiService, private tabs: TabsPage,
-              private tabsService: TabsService, private tokenApiService: TokenApiService) { }
+    private tabsService: TabsService, private tokenApiService: TokenApiService) { }
 
   public ngOnInit(): void {
 
@@ -40,19 +40,19 @@ export class MainPage implements OnInit {
     //this.getDesignShops();
 
     this.scanner.camerasFound.subscribe((devices: MediaDeviceInfo[]) => {
-    this.hasCameras = true;
+      this.hasCameras = true;
 
       console.log('Devices: ', devices);
       this.availableDevices = devices;
 
-      // selects the devices's back camera by default
-      // for (const device of devices) {
-      //     if (/back|rear|environment/gi.test(device.label)) {
-      //         this.scanner.changeDevice(device);
-      //         this.selectedDevice = device;
-      //         break;
-      //     }
-      // }
+      //selects the devices's back camera by default
+      for (const device of devices) {
+        if (/back|rear|environment/gi.test(device.label)) {
+          this.scanner.changeDevice(device);
+          this.selectedDevice = device;
+          break;
+        }
+      }
     });
 
     this.scanner.camerasNotFound.subscribe((devices: MediaDeviceInfo[]) => {
@@ -68,13 +68,13 @@ export class MainPage implements OnInit {
     console.log('Result: ', resultString);
     this.qrResultString = resultString;
     this.selectedDevice = null;
-}
+  }
 
-onDeviceSelectChange(selectedValue: string) {
-  this.qrResultString = null;
+  onDeviceSelectChange(selectedValue: string) {
+    this.qrResultString = null;
     console.log('Selection changed: ', selectedValue);
     this.selectedDevice = this.scanner.getDeviceById(selectedValue);
-}
+  }
 
   public optionsFn(): void {
     if (this.designshop != null) {
