@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GlobalhttpinterceptorserviceService } from './globalhttpinterceptorservice.service';
+import { GlobalHttpInterceptorService } from './globalhttpinterceptorservice.service';
 
-describe('GlobalhttpinterceptorserviceService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+describe('GlobalHttpInterceptorService', () => {
+  beforeEach(() => TestBed.configureTestingModule({providers: [GlobalHttpInterceptorService]}));
 
   it('should be created', () => {
-    const service: GlobalhttpinterceptorserviceService = TestBed.get(GlobalhttpinterceptorserviceService);
+    const service: GlobalHttpInterceptorService = TestBed.get(GlobalHttpInterceptorService);
     expect(service).toBeTruthy();
   });
 });

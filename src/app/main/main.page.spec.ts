@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { MainPage } from './main.page';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
+import { ZXingScannerModule } from '@innotec/ngx-scanner';
 
 
 describe('MainPage', () => {
@@ -14,8 +15,8 @@ describe('MainPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MainPage],
-      providers: [TabsService, TabsPage],
-      imports: [IonicModule.forRoot(), [HttpClientTestingModule], [FormsModule ]]
+      providers: [TabsService, TabsPage, ZXingScannerModule],
+      imports: [IonicModule.forRoot(), [HttpClientTestingModule], [FormsModule ], [ZXingScannerModule]]
     }).compileComponents();
 
     fixture = TestBed.createComponent(MainPage);

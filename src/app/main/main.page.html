@@ -24,10 +24,6 @@
               (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
           </div>
           <h2 *ngIf="!this.selectedDevice && !qrResultString">No camera selected.</h2>
-            <p>
-              Result:
-              <strong>{{ qrResultString }}</strong>
-            </p>
           <div *ngIf="!hasCameras && hasPermission === true">
             <h1>Looks like your actual device does not has cameras, or I could no find'em. </h1>
           </div>
@@ -52,6 +48,4 @@
       <ion-label>Windesheim</ion-label>
     </ion-item>
   </ion-list>
-
-  <zxing-scanner [formats]="['QR_CODE']" #scanner></zxing-scanner>
 </ion-content>

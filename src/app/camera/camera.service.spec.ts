@@ -1,7 +1,7 @@
+import { DesignShop } from './../models/designshop';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { CameraService } from './camera.service';
-import { designshop } from './../mocks/designshop';
 import { catchError } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
@@ -65,7 +65,10 @@ describe('CameraService', () => {
 
   it('test upload Picture met sessionId', (done) => {
     const file = new File(['f'], 'test-file.jpg', { lastModified: new Date().getTime(), type: 'image/jpeg' });
-    localStorage.setItem('ds', JSON.stringify(designshop[1]));
+    const ds = new DesignShop();
+    ds.id = '2182a411-6f44-4f3b-c2e1-03d54fbcdffc';
+    ds.description = 'test';
+    localStorage.setItem('ds', JSON.stringify(ds));
     service.sendPicture(file, 'test.jpg');
     const requ = httpTestingController.expectOne('https://localhost:44344/api/UploadImage/2182a411-6f44-4f3b-c2e1-03d54fbcdffc');
     expect(requ.request.body.get('uploadedFile')).toEqual(file);

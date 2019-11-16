@@ -38,7 +38,6 @@ export class DesignshopApiService {
   }
 
   private saveAppToken(token: AppToken) {
-    console.log('save appToken' + token.shopDescription + ' - ' + token.shopId);
     this.ds = new DesignShop();
     this.jwtToken = new JWTToken();
     this.ds.description = token.shopDescription;
@@ -49,7 +48,6 @@ export class DesignshopApiService {
   }
 
   private resetAppToken() {
-    console.log('reset appToken');
     localStorage.removeItem('jwttoken');
     localStorage.removeItem('ds');
   }

@@ -1,5 +1,4 @@
 import { ServiceService } from './main.service';
-import { TokenApiService } from './../services/token-api.service';
 import { TabsService } from './../tabs/tabs.service';
 import { DesignShop } from '../models/designshop';
 import { DesignshopApiService } from '../services/designshop-api.service';
@@ -7,9 +6,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TabsPage } from '../tabs/tabs.page';
 import { ZXingScannerComponent } from '@innotec/ngx-scanner';
 import { AppToken } from '../models/apptoken';
-
-
-
 
 @Component({
   selector: 'app-main',
@@ -29,14 +25,7 @@ export class MainPage implements OnInit {
 
   availableDevices: MediaDeviceInfo[];
   selectedDevice: MediaDeviceInfo;
-
-  designshops: DesignShop[];
-  designshop: DesignShop;
-
-
-
-  constructor(private designshopApiService: DesignshopApiService, private tabs: TabsPage,
-    private tabsService: TabsService, private tokenApiService: TokenApiService) { }
+  constructor(private designshopApiService: DesignshopApiService, private tabs: TabsPage, private tabsService: TabsService) { }
 
   readonly sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -70,12 +59,10 @@ export class MainPage implements OnInit {
   }
 
   async handleQrCodeResult(resultString: string) {
-    console.log('Result: ', resultString);
     this.qrResultString = resultString;
     const appToken: AppToken = await this.designshopApiService.getDesignShopAppToken(resultString);
 
     if (appToken) {
-      console.log('sessie' + appToken.shopDescription);
       this.tabs.cameraDisabled = this.tabsService.SetCameraPageAccess();
       this.sessionName = appToken.shopDescription;
     } else {
@@ -87,7 +74,6 @@ export class MainPage implements OnInit {
 
   onDeviceSelectChange(selectedValue: string) {
     this.qrResultString = null;
-    console.log('Selection changed: ', selectedValue);
     this.selectedDevice = this.scanner.getDeviceById(selectedValue);
   }
 }
