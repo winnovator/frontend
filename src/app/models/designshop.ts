@@ -1,6 +1,6 @@
 import { Time } from '@angular/common';
 
-export interface DesignShop {
+export class DesignShop {
   id: string;
   date: Date;
   description: string;

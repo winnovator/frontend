@@ -6,6 +6,7 @@ import { DesignshopApiService } from '../services/designshop-api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TabsPage } from '../tabs/tabs.page';
 import { ZXingScannerComponent } from '@innotec/ngx-scanner';
+import { AppToken } from '../models/apptoken';
 
 
 
@@ -24,6 +25,7 @@ export class MainPage implements OnInit {
   hasCameras = false;
   hasPermission: boolean;
   qrResultString: string;
+  sessionName: string;
 
   availableDevices: MediaDeviceInfo[];
   selectedDevice: MediaDeviceInfo;
@@ -31,14 +33,16 @@ export class MainPage implements OnInit {
   designshops: DesignShop[];
   designshop: DesignShop;
 
+
+
   constructor(private designshopApiService: DesignshopApiService, private tabs: TabsPage,
     private tabsService: TabsService, private tokenApiService: TokenApiService) { }
 
+  readonly sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+  }
+
   public ngOnInit(): void {
-
-
-    //this.getDesignShops();
-
     this.scanner.camerasFound.subscribe((devices: MediaDeviceInfo[]) => {
       this.hasCameras = true;
 
@@ -49,6 +53,7 @@ export class MainPage implements OnInit {
       for (const device of devices) {
         if (/back|rear|environment/gi.test(device.label)) {
           this.scanner.changeDevice(device);
+          this.sleep(1000).then(() => { });
           this.selectedDevice = device;
           break;
         }
@@ -64,9 +69,19 @@ export class MainPage implements OnInit {
     });
   }
 
-  handleQrCodeResult(resultString: string) {
+  async handleQrCodeResult(resultString: string) {
     console.log('Result: ', resultString);
     this.qrResultString = resultString;
+    const appToken: AppToken = await this.designshopApiService.getDesignShopAppToken(resultString);
+
+    if (appToken) {
+      console.log('sessie' + appToken.shopDescription);
+      this.tabs.cameraDisabled = this.tabsService.SetCameraPageAccess();
+      this.sessionName = appToken.shopDescription;
+    } else {
+      this.tabs.cameraDisabled = this.tabsService.SetCameraPageAccess();
+      this.sessionName = '';
+    }
     this.selectedDevice = null;
   }
 
@@ -74,21 +89,6 @@ export class MainPage implements OnInit {
     this.qrResultString = null;
     console.log('Selection changed: ', selectedValue);
     this.selectedDevice = this.scanner.getDeviceById(selectedValue);
-  }
-
-  public optionsFn(): void {
-    if (this.designshop != null) {
-      localStorage.setItem('ds', JSON.stringify(this.designshop));
-      this.tabs.cameraDisabled = this.tabsService.SetCameraPageAccess();
-    }
-  }
-
-
-
-  public async getDesignShops() {
-    await this.tokenApiService.getJWTToken().then(data =>
-      this.designshopApiService.getDesignShops().subscribe(res => this.designshops = res)
-    );
   }
 }
 
