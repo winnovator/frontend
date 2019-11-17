@@ -18,7 +18,7 @@ export class AppComponent {
     private router: Router
   ) {
     this.initializeApp();
-    router.navigate(['tabs/main']);
+    router.navigate(['/tabs/main']);
   }
 
   initializeApp() {
