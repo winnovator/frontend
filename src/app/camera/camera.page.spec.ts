@@ -21,4 +21,12 @@ describe('CameraPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Open pick file or create camera window', () => {
+    const file = new File(['f'], 'test-file.jpg', { lastModified: new Date().getTime(), type: 'image/jpeg' });
+    component.openPWAPhotoPicker();
+    fixture.whenStable().then(() => {
+      expect(component.pwaphoto).toHaveBeenCalled();
+    });
+  });
 });

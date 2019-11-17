@@ -73,6 +73,7 @@ export class MainPage implements OnInit {
   }
 
   onDeviceSelectChange(selectedValue: string) {
+    console.log( 'selected: ' + selectedValue);
     this.qrResultString = null;
     this.selectedDevice = this.scanner.getDeviceById(selectedValue);
   }
