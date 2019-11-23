@@ -26,11 +26,4 @@ describe('MainPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('on Device Select change - reset result', () => {
-    component.qrResultString = 'test';
-    component.onDeviceSelectChange('1234');
-    expect(component.qrResultString).toEqual(null);
-  });
-
 });
