@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { CameraPage } from './camera.page';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CamComponent } from './cam/cam.component';
 
 describe('CameraPage', () => {
   let component: CameraPage;
@@ -9,7 +10,7 @@ describe('CameraPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CameraPage],
+      declarations: [CameraPage, CamComponent],
       imports: [IonicModule.forRoot(), [HttpClientTestingModule]]
     }).compileComponents();
 
@@ -20,13 +21,5 @@ describe('CameraPage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('Open pick file or create camera window', () => {
-    const file = new File(['f'], 'test-file.jpg', { lastModified: new Date().getTime(), type: 'image/jpeg' });
-    component.openPWAPhotoPicker();
-    fixture.whenStable().then(() => {
-      expect(component.pwaphoto).toHaveBeenCalled();
-    });
   });
 });

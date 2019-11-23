@@ -7,7 +7,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { ZXingScannerModule } from '@innotec/ngx-scanner';
 
-
 describe('MainPage', () => {
   let component: MainPage;
   let fixture: ComponentFixture<MainPage>;
@@ -33,4 +32,5 @@ describe('MainPage', () => {
     component.onDeviceSelectChange('1234');
     expect(component.qrResultString).toEqual(null);
   });
+
 });
