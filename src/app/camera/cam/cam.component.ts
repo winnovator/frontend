@@ -31,7 +31,6 @@ export class CamComponent implements OnInit {
   uploadPWA(component: any) {
 
     if (component == null) {
-      console.log('leeg');
       return;
     }
 

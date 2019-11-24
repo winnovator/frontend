@@ -35,10 +35,12 @@ describe('CameraService', () => {
       done();
     });
 
-    it('test file conversion to base64', (done) => {
+    it('test file conversion to base64', async (done) => {
       const file = new File(['f'], 'test-file.jpg', { lastModified: new Date().getTime(), type: 'image/jpeg' });
-      service.firstFileToBase64(file).then((result: string) => {
+      await service.firstFileToBase64(file).then((result: string) => {
         expect(result).toEqual('data:image/jpeg;base64,Zg==');
+      }, (err: any) => {
+        console.log('err: ' + err);
       });
       done();
     });
