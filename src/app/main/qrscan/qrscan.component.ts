@@ -49,7 +49,6 @@ export class QrscanComponent implements OnInit {
   async handleQrCodeResult(resultString: string) {
     this.qrResultString = resultString;
     const appToken: AppToken = await this.designshopApiService.getDesignShopAppToken(resultString);
-
     if (appToken) {
       this.tabs.cameraDisabled = this.tabsService.SetCameraPageAccess();
       this.sessionName = appToken.shopDescription;
