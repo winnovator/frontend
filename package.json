@@ -33,7 +33,7 @@
     "zone.js": "~0.9.1",
     "@auth0/angular-jwt": "^3.0.1",
     "@ionic/pwa-elements": "^1.4.1",
-    "@innotec/ngx-scanner": "^2.0.0",
+    "@zxing/ngx-scanner": "^2.0.1",
     "ngx-cookie-service": "2.2.0"
   },
   "devDependencies": {

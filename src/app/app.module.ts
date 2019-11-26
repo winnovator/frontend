@@ -1,3 +1,4 @@
+import { QrscanComponent } from './main/qrscan/qrscan.component';
 import { CamComponent } from './camera/cam/cam.component';
 import { JWTToken } from './models/jwttoken';
 import { NgModule } from '@angular/core';
