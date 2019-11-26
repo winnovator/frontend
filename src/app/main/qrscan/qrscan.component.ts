@@ -63,8 +63,12 @@ export class QrscanComponent implements OnInit {
     console.log('selected: ' + selectedValue);
     this.qrResultString = null;
     this.scannerEnabled = true;
-    const device = this.availableDevices.find(x => x.deviceId === selectedValue);
-    this.selectedDevice = device || null;
+    if (this.availableDevices) {
+      const device = this.availableDevices.find(x => x.deviceId === selectedValue);
+      this.selectedDevice = device || null;
+    } else {
+      this.selectedDevice = null;
+    }
   }
 
 }

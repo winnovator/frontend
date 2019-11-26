@@ -44,12 +44,17 @@ describe('QrscanComponent', () => {
     done();
   });
 
-  it('GetDesignShoptoken - it should not set SessionName', async () => {
+  it('GetDesignShoptoken result is null - it should not set SessionName', async () => {
     component = TestBed.get(QrscanComponent);
     designshopApiServiceSpy = TestBed.get(DesignshopApiService);
     designshopApiServiceSpy.getDesignShopAppToken.and.returnValue(Promise.resolve(null));
     await component.handleQrCodeResult('123');
     expect(component.sessionName).toEqual('');
-   
+  });
+
+  it('Test onDeviceSelectChange', async () => {
+    component = TestBed.get(QrscanComponent);
+    component.onDeviceSelectChange('t');
+    expect(component.selectedDevice).toEqual(null);
   });
 });
