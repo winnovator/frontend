@@ -54,7 +54,7 @@ export class QrscanComponent implements OnInit {
       this.sessionName = appToken.shopDescription;
     } else {
       this.tabs.cameraDisabled = this.tabsService.SetCameraPageAccess();
-      this.sessionName = '';
+      this.sessionName = 'not available, scan other QRcode';
     }
     this.selectedDevice = null;
   }

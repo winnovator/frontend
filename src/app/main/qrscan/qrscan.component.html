@@ -5,7 +5,7 @@
 <div class='camera'>
   <div *ngIf="availableDevices">
     <select (change)="onDeviceSelectChange($event.target.value)">
-      <option value="" [selected]="!selectedDevice">Select camera for QRcode scan</option>
+      <option value="" [selected]="!selectedDevice">Scan QR Code</option>
       <option *ngFor="let device of availableDevices" [value]="device.deviceId"
         [selected]="selectedDevice && device.deviceId === selectedDevice.deviceId">{{ device.label }}</option>
     </select>
