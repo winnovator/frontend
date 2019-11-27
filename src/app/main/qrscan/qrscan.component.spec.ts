@@ -49,7 +49,7 @@ describe('QrscanComponent', () => {
     designshopApiServiceSpy = TestBed.get(DesignshopApiService);
     designshopApiServiceSpy.getDesignShopAppToken.and.returnValue(Promise.resolve(null));
     await component.handleQrCodeResult('123');
-    expect(component.sessionName).toEqual('');
+    expect(component.sessionName).toEqual('not available, scan other QRcode');
   });
 
   it('Test onDeviceSelectChange', async () => {
