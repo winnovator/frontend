@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      WInnovator Session Selection
-    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,15 +7,7 @@
   <ion-card class="welcome-card">
     <div id='image'><img src="./assets/winnovator.svg" alt="" /></div>
     <ion-card-content>
-      <ion-list>
-        <ion-item>
-          Select a session
-          <ion-select placeholder="" [(ngModel)]="designshop" (ionChange)="optionsFn();">
-            <ion-select-option *ngFor='let designshop of designshops' [value]='designshop'>
-              {{designshop.description}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
+      <app-qrscan></app-qrscan>
     </ion-card-content>
   </ion-card>
   <ion-list lines="none">
