@@ -1,11 +1,11 @@
 {
-  "name": "winnovator Frontend",
+  "name": "WInnovator App",
   "short_name": "winnovator",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "/winnovator/",
-  "start_url": "/winnovator/",
+  "scope": "/",
+  "start_url": "/",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
