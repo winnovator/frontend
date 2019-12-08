@@ -70,10 +70,13 @@ describe('CamComponent', () => {
 
   it('test orientationState', () => {
     component.updateOrientatioState();
-    if ('window.innerHeight' > 'window.innerWidth') {
-      expect(component.state).toEqual('landscape');
-    } else {
+    console.log('width: ' + window.innerWidth);
+    console.log('height: ' + window.innerHeight);
+    if
+     (window.innerHeight > window.innerWidth) {
       expect(component.state).toEqual('portrait');
+    } else {
+      expect(component.state).toEqual('landscape');
     }
   });
 
