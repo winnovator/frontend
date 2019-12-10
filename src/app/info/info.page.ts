@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { version, name } from '../../../package.json';
+import { version, description } from '../../../package.json';
 
 @Component({
   selector: 'app-info',
@@ -9,11 +9,11 @@ import { version, name } from '../../../package.json';
 })
 export class InfoPage {
 public appVersion;
-public appName;
+public appDescription;
 
   constructor() {
     this.appVersion = version;
-    this.appName = name;
+    this.appDescription = description;
   }
 }
 

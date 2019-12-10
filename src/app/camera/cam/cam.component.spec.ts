@@ -4,6 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CamComponent } from './cam.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { $ } from 'protractor';
 
 class MockCameraService extends CameraService {
 
@@ -65,6 +66,18 @@ describe('CamComponent', () => {
   it('test UploadPWA function without a file', () => {
     component.uploadPWA(null);
     expect(component).toBeTruthy();
+  });
+
+  it('test orientationState', () => {
+    component.updateOrientatioState();
+    console.log('width: ' + window.innerWidth);
+    console.log('height: ' + window.innerHeight);
+    if
+     (window.innerHeight > window.innerWidth) {
+      expect(component.state).toEqual('portrait');
+    } else {
+      expect(component.state).toEqual('landscape');
+    }
   });
 
 });
