@@ -28,17 +28,17 @@ export class CameraService {
       this.uploadFile(blob, name, this.url).pipe(catchError(this.handleError))
         .subscribe(
           (data) => {
-            this.updateStatus('POST call successful value returned in body');
+            this.updateStatus('POST call gelukt');
           },
           response => {
-            this.updateStatus('Upload status: Upload error');
+            this.updateStatus('Upload status: Upload fout, probeer het opnieuw');
           },
           () => {
 
-            this.updateStatus('Upload status: Upload complete');
+            this.updateStatus('Upload status: Upload gelukt');
           });
     } else {
-      this.updateStatus('Upload status: No sessionID available');
+      this.updateStatus('Upload status: Geen sessionID beschikbaar');
     }
   }
 
@@ -58,7 +58,7 @@ export class CameraService {
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
+      console.error('fout opgetreden:', error.error.message);
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
@@ -67,8 +67,8 @@ export class CameraService {
         `body was: ${error.error}`);
     }
     // return an observable with a user-facing error message
-    this.updateStatus('Something bad happened; please try again later.');
-    return throwError('Something bad happened; please try again later.');
+    this.updateStatus('Er ging iets mis, probeer het later nog eens.');
+    return throwError('Er ging iets mis, probeer het later nog eens.');
   }
 
   // convert file to Base64
@@ -85,7 +85,7 @@ export class CameraService {
           reject(error);
         };
       } else {
-        reject(new Error('No file found'));
+        reject(new Error('Geen bestand gevonden'));
       }
     });
   }
