@@ -18,15 +18,12 @@
     <zxing-scanner #scan class="scanner" start="true" [enable]="scannerEnabled" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
   </div>
   <div *ngIf="!hasCameras && hasPermission === true">
-    <h1>Je toestel heeft geen camera(s) of deze kunnen niet gevonden worden</h1>
+    <h2>Je toestel heeft geen camera(s) of deze kunnen niet gevonden worden</h2>
   </div>
   <div *ngIf="hasPermission === undefined">
-    <h1>Wcht op toestemming.</h1>
-    <blockquote>
-      <h2>Als je toestel geen camera(s) heeft, wordt er ook geen toestemming gevraagd.</h2>
-    </blockquote>
+    <h2>Wacht op toestemming. Als je toestel geen camera(s) heeft, wordt er ook geen toestemming gevraagd.</h2>
   </div>
   <div *ngIf="hasPermission === false">
-    <h1>je gaf geen toestemming voor gebruik van de camera, we kunnen niet scannen zonder toestemming. 😪</h1>
+    <h2>je gaf geen toestemming voor gebruik van de camera, we kunnen niet scannen zonder toestemming. 😪</h2>
   </div>
   </div>

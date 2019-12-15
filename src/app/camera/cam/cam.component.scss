@@ -2,6 +2,7 @@
     display:none;
     margin:10px;
     }
+
     #pwa input[type=file] + label {
     display:inline-block;
     margin:20px;
@@ -11,9 +12,26 @@
     border-radius: 6px;
     color:#666F77;
     }
+
     #pwa input[type=file]:active + label {
     background-image: none;
     background-color:#2D6C7A;
     color:#FFFFFF;
+    }
+
+    .uploadSection{
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+    }
+
+    .uploadedImage{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width:300px;
+       
     }
     

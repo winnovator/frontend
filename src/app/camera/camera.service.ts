@@ -21,8 +21,8 @@ export class CameraService {
   }
   // Send picture to backend
   sendPicture(blob: any, name: string) {
-      this.updateStatus('Upload status: Uploading');
-      if (localStorage.getItem('ds') !== null) {
+    this.updateStatus('Upload status: Upload gestart');
+    if (localStorage.getItem('ds') !== null) {
       this.ds = JSON.parse(localStorage.getItem('ds'));
       this.url = `${environment.apiUrl}UploadImage/${this.ds.id}`;
       this.uploadFile(blob, name, this.url).pipe(catchError(this.handleError))
@@ -30,11 +30,10 @@ export class CameraService {
           (data) => {
             this.updateStatus('POST call gelukt');
           },
-          response => {
-            this.updateStatus('Upload status: Upload fout, probeer het opnieuw');
+          (response) => {
+            this.updateStatus('Upload status: ' + response);
           },
           () => {
-
             this.updateStatus('Upload status: Upload gelukt');
           });
     } else {
@@ -43,32 +42,25 @@ export class CameraService {
   }
 
   uploadFile(blob: any, name: string, url: string): Observable<any> {
-      const formData = new FormData();
-      formData.append('uploadedFile', blob, name);
-      const httpOptions: any = {
-        body: formData,
-        observe: 'response',
-        responseType: 'text',
-        headers: new HttpHeaders({
-        })
-      };
-      return this.http.request('post', url, httpOptions);
+    const formData = new FormData();
+    formData.append('uploadedFile', blob, name);
+    const httpOptions: any = {
+      body: formData,
+      observe: 'response',
+      responseType: 'text',
+      headers: new HttpHeaders({
+      })
+    };
+    return this.http.request('post', url, httpOptions);
   }
 
   private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('fout opgetreden:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
     // return an observable with a user-facing error message
-    this.updateStatus('Er ging iets mis, probeer het later nog eens.');
-    return throwError('Er ging iets mis, probeer het later nog eens.');
+    if (error.status === 404) {
+      return throwError('Upload mislukt, er is geen werkvorm actief.');
+    } else {
+      return throwError('Er is iets misgegaan, probeer het nog eens.');
+    }
   }
 
   // convert file to Base64

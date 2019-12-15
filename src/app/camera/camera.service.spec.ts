@@ -30,7 +30,7 @@ describe('CameraService', () => {
       service.firstFileToBase64(null).then((result: string) => {
         this.imgURI = result;
       }, (err: any) => {
-        expect(err.message).toEqual('No file found');
+        expect(err.message).toEqual('Geen bestand gevonden');
       });
       done();
     });
@@ -61,7 +61,7 @@ describe('CameraService', () => {
   it('test upload Picture zonder sessionId', (done) => {
     const file = new File(['f'], 'test-file.jpg', { lastModified: new Date().getTime(), type: 'image/jpeg' });
     service.sendPicture(file, 'tester.jpg');
-    expect(service.uploadStatus).toEqual(new BehaviorSubject<string>('Upload status: No sessionID available'));
+    expect(service.uploadStatus).toEqual(new BehaviorSubject<string>('Upload status: Geen sessionID beschikbaar'));
     done();
     });
 
