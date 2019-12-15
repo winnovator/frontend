@@ -11,10 +11,12 @@
     </select>
   </div>
 
+  <div [hidden]="selectedDevice && hasPermission === true">
+    <img class="scanImage" src="./assets/qr-code-scan-icon.jpg" alt="" />
+  </div>
   <div [hidden]="!hasCameras || qrResultString">
     <zxing-scanner #scan class="scanner" start="true" [enable]="scannerEnabled" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
   </div>
-  <h2 *ngIf="!this.selectedDevice && !qrResultString">No camera selected.</h2>
   <div *ngIf="!hasCameras && hasPermission === true">
     <h1>Looks like your actual device does not has cameras, or I could no find'em. </h1>
   </div>
