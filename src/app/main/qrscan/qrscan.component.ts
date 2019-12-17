@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AppToken } from 'src/app/models/apptoken';
-import { DesignshopApiService } from 'src/app/services/designshop-api.service';
+import { AppToken } from './../../models/apptoken';
+import { DesignshopApiService } from './../../services/designshop-api.service';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
-import { TabsPage } from 'src/app/tabs/tabs.page';
-import { TabsService } from 'src/app/tabs/tabs.service';
+import { TabsPage } from './../../tabs/tabs.page';
+import { TabsService } from './../../tabs/tabs.service';
 
 @Component({
   selector: 'app-qrscan',

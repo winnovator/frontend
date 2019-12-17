@@ -1,7 +1,7 @@
 import { DesignShop } from '../models/designshop';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from './../../environments/environment';
 import { BehaviorSubject, throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -21,54 +21,46 @@ export class CameraService {
   }
   // Send picture to backend
   sendPicture(blob: any, name: string) {
-      this.updateStatus('Upload status: Uploading');
-      if (localStorage.getItem('ds') !== null) {
+    this.updateStatus('Upload status: Upload gestart');
+    if (localStorage.getItem('ds') !== null) {
       this.ds = JSON.parse(localStorage.getItem('ds'));
       this.url = `${environment.apiUrl}UploadImage/${this.ds.id}`;
       this.uploadFile(blob, name, this.url).pipe(catchError(this.handleError))
         .subscribe(
           (data) => {
-            this.updateStatus('POST call successful value returned in body');
+            this.updateStatus('POST call gelukt');
           },
-          response => {
-            this.updateStatus('Upload status: Upload error');
+          (response) => {
+            this.updateStatus('Upload status: ' + response);
           },
           () => {
-
-            this.updateStatus('Upload status: Upload complete');
+            this.updateStatus('Upload status: Upload gelukt');
           });
     } else {
-      this.updateStatus('Upload status: No sessionID available');
+      this.updateStatus('Upload status: Geen sessionID beschikbaar');
     }
   }
 
   uploadFile(blob: any, name: string, url: string): Observable<any> {
-      const formData = new FormData();
-      formData.append('uploadedFile', blob, name);
-      const httpOptions: any = {
-        body: formData,
-        observe: 'response',
-        responseType: 'text',
-        headers: new HttpHeaders({
-        })
-      };
-      return this.http.request('post', url, httpOptions);
+    const formData = new FormData();
+    formData.append('uploadedFile', blob, name);
+    const httpOptions: any = {
+      body: formData,
+      observe: 'response',
+      responseType: 'text',
+      headers: new HttpHeaders({
+      })
+    };
+    return this.http.request('post', url, httpOptions);
   }
 
   private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
     // return an observable with a user-facing error message
-    this.updateStatus('Something bad happened; please try again later.');
-    return throwError('Something bad happened; please try again later.');
+    if (error.status === 404) {
+      return throwError('Upload mislukt, er is geen werkvorm actief.');
+    } else {
+      return throwError('Er is iets misgegaan, probeer het nog eens.');
+    }
   }
 
   // convert file to Base64
@@ -85,7 +77,7 @@ export class CameraService {
           reject(error);
         };
       } else {
-        reject(new Error('No file found'));
+        reject(new Error('Geen bestand gevonden'));
       }
     });
   }

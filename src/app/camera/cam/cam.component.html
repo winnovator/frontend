@@ -1,20 +1,19 @@
-<ion-content class="ion-padding">
-  <h2>Take a photo or use the gallery</h2>
-  <Div *ngIf="state != 'landscape'">Make the photo in landscape mode</Div>
+<ion-content class="uploadSection">
+  <ion-card >
+    <h2>Neem een foto of gebruik de gallery</h2>
+    <Div *ngIf="state != 'landscape'">Draai het toestel en neem de foto in landscape mode</Div>
+    <div *ngIf="imgURI != null">
+      <img [src]="imgURI" class="uploadedImage" #imageSrc alt="picture">
+    </div>
 
-  
+    <div id="pwa" class="col-lg-8 col-xs-8">
+      <input type="file" id="pwaphoto" #pwaphoto accept="image/x-png,image/jpeg" (change)="uploadPWA($event)">
+    </div>
+  </ion-card>
+  <div>{{uploadStatus}}</div>
   <ion-fab *ngIf="state != 'portrait'" vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button (click)="openPWAPhotoPicker()">
       <ion-icon name="camera"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <div *ngIf="imgURI != null">
-    <img [src]="imgURI" #imageSrc style="width: 200px;" alt="picture">
-  </div>
-
-  <div id="pwa" class="col-lg-8 col-xs-8">
-    <input type="file" id="pwaphoto" #pwaphoto accept="image/x-png,image/jpeg" (change)="uploadPWA($event)">
-  </div>
-  <div>{{uploadStatus}}</div>
 </ion-content>

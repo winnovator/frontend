@@ -36,7 +36,6 @@ export class CamComponent implements OnInit {
     if (this.pwaphoto == null) {
       return;
     }
-    console.log('click');
     this.pwaphoto.nativeElement.click();
   }
 
@@ -45,14 +44,15 @@ export class CamComponent implements OnInit {
     if (component == null) {
       return;
     }
-
     const file = component.target.files[0] as File;
-    this.cameraService.sendPicture(file, file.name);
-    this.cameraService.firstFileToBase64(file).then((result: string) => {
-      this.imgURI = result;
-    }, (err: any) => {
-      this.imgURI = null;
-    });
+    if (file != null) {
+      this.cameraService.sendPicture(file, file.name);
+      this.cameraService.firstFileToBase64(file).then((result: string) => {
+        this.imgURI = result;
+      }, (err: any) => {
+        this.imgURI = null;
+      });
+    }
   }
 
 }
