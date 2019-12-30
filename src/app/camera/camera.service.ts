@@ -58,7 +58,9 @@ export class CameraService {
     // return an observable with a user-facing error message
     if (error.status === 404) {
       return throwError('Upload mislukt, er is geen werkvorm actief.');
-    } else {
+    } else if (error.status === 401) {
+      return throwError('Upload mislukt, login fout.');
+    }  else {
       return throwError('Er is iets misgegaan, probeer het nog eens.');
     }
   }
