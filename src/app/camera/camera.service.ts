@@ -48,8 +48,7 @@ export class CameraService {
       body: formData,
       observe: 'response',
       responseType: 'text',
-      headers: new HttpHeaders({
-      })
+      headers: new HttpHeaders({'ngsw-bypass': 'true'})
     };
     return this.http.request('post', url, httpOptions);
   }
